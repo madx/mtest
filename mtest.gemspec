@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 
 MTEST_GEMSPEC = Gem::Specification.new do |spec|
-  s.platform = Gem::Platform::RUBY
+  spec.platform = Gem::Platform::RUBY
   spec.name = 'mtest'
   spec.summary = "A micro test framework"
   spec.version = File.read('VERSION').strip
