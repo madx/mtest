@@ -16,13 +16,13 @@ def MTest(tests)
       e,p,v = *t
       threads << Thread.new do
         begin
-          puts(if (r = p.call) == v
+          if (r = p.call) == v
             results[:pass] += 1
-            ". #{e}"._g
+            puts ". #{e}"._g
           else
             results[:fail] += 1
-            "! #{e} was #{r}, expected #{v}"._r
-          end)
+            puts "! #{e} was #{r}, expected #{v}"._r
+          end
         rescue => x
           results[:err] += 1
           puts "@ #{x.class} at line #{x.backtrace[0].split(':')[1]}"._p
