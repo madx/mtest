@@ -1,7 +1,7 @@
 
     ‘‘ MTest ’’
 
-MTest (stands for MicroTest) is a tiny TDD framework in less than 51 lines.
+MTest (stands for MicroTest) is a tiny and fast TDD framework.
 
 It provides the Kernel#MTest method that takes an array of test as a parameter.
 
@@ -26,9 +26,16 @@ MTests returns a hash that represents the results of a test. Example!
       40 + 2
     }, 42],
     "This one fails",
-    ["FAIIIL", proc { true }, false]
+    ["FAIL", proc { true }, false]
   ]
   
   res = MTest(tests)
   
   res # => {:pass => 1, :err => 0, :fail => 1}
+  
+** Contributing **
+
+Everyone is welcome to contribute to MTest. The only restriction is that
+mtest.rb must be less than 51 lines long.
+
+But feel free to submit your own tools, examples, hacks, etc.
