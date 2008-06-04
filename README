@@ -1,1 +1,34 @@
-== MTest
+
+    `` MTest ‘‘
+
+MTest (stands for MicroTest) is a tiny TDD framework in less than 51 lines.
+
+It provides the Kernel#MTest method that takes an array of test as a parameter.
+
+Need an example? Right.
+
+  require 'mtest'
+  
+  tests = [
+    "This is a simple test",
+    ["Sum 40+2", proc {
+      40 + 2
+    }, 42]
+  ]
+  
+  MTest(tests)
+  
+MTests returns a hash that represents the results of a test. Example!
+
+  tests = [
+    "This is a simple test",
+    ["Sum 40+2", proc {
+      40 + 2
+    }, 42],
+    "This one fails",
+    ["FAIIIL", proc { true }, false]
+  ]
+  
+  res = MTest(tests)
+  
+  res # => {:pass => 1, :err => 0, :fail => 1}
