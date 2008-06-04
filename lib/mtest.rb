@@ -25,11 +25,14 @@ def MTest(tests)
           end
         rescue => x
           results[:err] += 1
-          puts "@ #{x.class} at line #{x.backtrace[0].split(':')[1]}"._p
+          file, line = x.backtrace[0].split(':')
+          puts "@ #{x.class} at line #{line} in #{File.basename(file)}"._p
+          puts "  #{x.message}" if $VERBOSE
         end
       end
     end
   end
   threads.join
+  sleep(0.1) # This is a dirty fix so joining doesn't screws newlines
   results
 end
