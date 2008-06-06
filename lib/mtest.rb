@@ -27,7 +27,7 @@ def MTest(tests)
           results[:err] += 1
           file, line = x.backtrace[0].split(':')
           puts "@ #{x.class} at line #{line} in #{File.basename(file)}"._p
-          puts "  #{x.message}" if $VERBOSE
+          puts "  #{x.message}"
         end
       end
     end
