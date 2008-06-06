@@ -9,25 +9,29 @@ String.send(:include, Format)
 
 def MTest(tests)
   threads = []; results = {:pass => 0, :fail => 0, :err => 0}
-  tests.each do |t|
-    if t.is_a?(String) 
-      puts t
-    else
-      e,p,v = *t
-      threads << Thread.new do
-        begin
-          if (r = p.call) == v
-            results[:pass] += 1
-            puts ". #{e}"._g
-          else
-            results[:fail] += 1
-            puts "! #{e} was #{r}, expected #{v}"._r
+  if tests.nil?
+    puts "no tests."
+  else  
+    tests.each do |t|
+      if t.is_a?(String) 
+        puts t
+      else
+        e,p,v = *t
+        threads << Thread.new do
+          begin
+            if (r = p.call) == v
+              results[:pass] += 1
+              puts ". #{e}"._g
+            else
+              results[:fail] += 1
+              puts "! #{e} was #{r}, expected #{v}"._r
+            end
+          rescue => x
+            results[:err] += 1
+            file, line = x.backtrace[0].split(':')
+            puts "@ #{x.class} at line #{line} in #{File.basename(file)}"._p
+            puts "  #{x.message}"
           end
-        rescue => x
-          results[:err] += 1
-          file, line = x.backtrace[0].split(':')
-          puts "@ #{x.class} at line #{line} in #{File.basename(file)}"._p
-          puts "  #{x.message}"
         end
       end
     end
