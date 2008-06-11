@@ -27,6 +27,7 @@ def MTest(tests)
           results[:err] += 1
           file, line = x.backtrace[0].split(':')
           puts "@ #{x.class} at line #{line} in #{File.basename(file)}"._p
+          puts "  (#{e})"
           puts "  #{x.message}"
         end
       end
