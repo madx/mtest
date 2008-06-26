@@ -1,7 +1,8 @@
 require 'rubygems'
 require 'rake'
 require 'rake/gempackagetask'
-load    'mtest.gemspec'
+
+MTEST_GEMSPEC = eval(File.read('mtest.gemspec'))
 
 Rake::GemPackageTask.new(MTEST_GEMSPEC) do |pkg|
   pkg.need_tar_bz2 = true

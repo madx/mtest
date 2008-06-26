@@ -1,7 +1,4 @@
-require 'rubygems'
-require 'rake'
-
-MTEST_GEMSPEC = Gem::Specification.new do |spec|
+Gem::Specification.new do |spec|
   spec.platform = Gem::Platform::RUBY
   spec.name = 'mtest'
   spec.summary = "A micro test framework"
@@ -13,7 +10,7 @@ MTEST_GEMSPEC = Gem::Specification.new do |spec|
       It is inspired from Paul Barry's "One line test framework" which you can
       found at http://paulbarry.com/articles/2008/05/23/a-ruby-test-framework-in-one-line.
     END
-  spec.files = FileList['lib/mtest.rb'].to_a + ['README']
+  spec.files = %w(lib/mtest.rb README VERSION Rakefile)
   spec.homepage = 'http://yapok.org/'
   spec.has_rdoc = false
 end
