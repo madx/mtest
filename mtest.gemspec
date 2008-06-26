@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'rake'
+
 MTEST_GEMSPEC = Gem::Specification.new do |spec|
   spec.platform = Gem::Platform::RUBY
   spec.name = 'mtest'
