@@ -21,7 +21,7 @@ def MTest(tests)
             puts ". #{e}"._g
           else
             results[:fail] += 1
-            puts "! #{e} was #{r}, expected #{v}"._r
+            puts "! #{e} was #{r.inspect}, expected #{v.inspect}"._r
           end
         rescue => x
           results[:err] += 1
